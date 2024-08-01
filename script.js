@@ -96,3 +96,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Отключаем масштабирование
+    const preventZoom = (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) {
+            e.preventDefault();
+        }
+    };
+
+    // Блокируем события мыши и касания
+    document.addEventListener('wheel', preventZoom, { passive: false });
+    document.addEventListener('touchmove', preventZoom, { passive: false });
+    document.addEventListener('gesturestart', preventZoom, { passive: false });
+
+    // Предотвращаем масштабирование при двойном нажатии
+    document.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+    });
+
+    // Отключаем масштабирование при нажатии кнопок управления масштабом (например, Ctrl +)
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+        }
+    });
+});
+
