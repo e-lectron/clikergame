@@ -131,7 +131,7 @@ body {
 }
 
 .coin-icon img {
-    max-width: 300px; /* Настройка размера иконки */
+    max-width: 275px; /* Настройка размера иконки */
     transition: transform 0.1s ease-in-out; /* Плавный переход для эффекта продавливания */
 }
 
