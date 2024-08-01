@@ -1,0 +1,190 @@
+/* Общие стили для body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Politburo', sans-serif;
+    background-image: url('background-gradient-home.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Контейнер основного контента */
+.content {
+    flex: 1;
+}
+
+/* Контейнер для иконок с текстом */
+.icon-text-container {
+    position: fixed;
+    bottom: 125px; /* Расположение контейнера выше нижней колонки на 25 пикселей */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+.icon-with-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-with-text img {
+    max-height: 50px;
+    cursor: default; /* Иконки не кликабельны */
+}
+
+.icon-with-text p {
+    margin: 5px 0 0 0; /* Отступ сверху в 5 пикселей */
+    font-size: 14px;
+    color: black;
+}
+
+/* Контейнер фиксированной картинки */
+.fixed-image-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px; /* Фиксированная высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Прозрачный белый фон */
+    border-top: 2px solid white; /* Белая обводка сверху */
+    border-radius: 15px; /* Скошенные углы */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта */
+    overflow: hidden; /* Для обрезки содержимого, выходящего за границы */
+}
+
+/* Фиксированная картинка */
+.fixed-image {
+    width: 100%;
+    height: 100%; /* Фиксированная высота картинки */
+    object-fit: cover; /* Обеспечивает сохранение соотношения сторон */
+    border-radius: 15px; /* Скошенные углы */
+}
+
+/* Контент внутри картинки */
+.image-content {
+    position: absolute;
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение иконок */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box; /* Включаем padding в размеры элемента */
+}
+
+/* Стили для иконок */
+.icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Для псевдоэлементов */
+    z-index: 1; /* Иконки выше разделительных черт */
+}
+
+.icon img {
+    max-height: 50%; /* Настройка высоты иконок */
+    max-width: 50%;  /* Настройка ширины иконок */
+}
+
+/* Псевдоэлементы для разделительных линий */
+.icon:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1px; /* Позиционируем черту вне иконки */
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%);
+    height: 60%; /* Высота разделительной линии */
+    width: 3px; /* Ширина разделительной линии */
+    background-color: white; /* Цвет разделительной линии */
+    border-radius: 5px; /* Закругленные края */
+    z-index: 0; /* Разделительные черты ниже иконок */
+}
+
+/* Иконка монетки */
+.coin-icon {
+    position: fixed;
+    top: 50%; /* Позиционирование по центру экрана */
+    left: 50%; /* Позиционирование по центру экрана */
+    transform: translate(-50%, -50%); /* Центрирование по горизонтали и вертикали */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Убедитесь, что иконка над другими элементами */
+    transition: transform 0.1s ease-in-out; /* Плавный переход для эффекта продавливания */
+}
+
+.coin-icon img {
+    max-width: 300px; /* Настройка размера иконки */
+    transition: transform 0.1s ease-in-out; /* Плавный переход для эффекта продавливания */
+}
+
+/* Эффект продавливания при нажатии */
+.coin-icon:active img {
+    transform: scale(0.9); /* Уменьшаем иконку до 90% при нажатии */
+}
+
+/* Стили для текстовых чисел */
+.number-text {
+    position: fixed;
+    top: 70px; /* Отступ сверху от верхнего края страницы */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Корректировка для центрирования */
+    font-size: 48px; /* Размер шрифта для чисел */
+    font-family: 'Politburo', sans-serif; /* Используемый шрифт */
+    color: white; /* Цвет текста */
+    white-space: nowrap; /* Запрещаем перенос текста на следующую строку */
+    text-align: center; /* Центрируем текст по горизонтали */
+    z-index: 10; /* Убедитесь, что элемент отображается поверх других */
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Класс для активации пульсации */
+.icon.pulse {
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* Анимация вибрации */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Класс для активации вибрации */
+.icon.shake {
+    animation: shake 0.6s ease-in-out;
+}
