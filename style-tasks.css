@@ -13,75 +13,16 @@ body {
     overflow: hidden; /* Добавлено, чтобы устранить прокрутку */
 }
 
-/* Контейнер основного контента */
-.content {
-    flex: 1;
-    overflow: auto; /* Добавлено, чтобы контент прокручивался, а не весь body */
+/* Заголовок страницы */
+h1 {
+    text-align: center;
+    color: white;
 }
 
-/* Контейнер для иконок с текстом */
-.icon-text-container {
-    position: fixed;
-    bottom: 160px; /* Расположение контейнера выше нижней колонки на 25 пикселей */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 25px;
-    box-sizing: border-box;
-}
-
-.icon-with-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.icon-with-text img {
-    max-height: 50px;
-    cursor: default; /* Иконки не кликабельны */
-}
-
-.icon-with-text p {
-    margin: 5px 0 0 0; /* Отступ сверху в 5 пикселей */
-    font-size: 14px;
-    color: black;
-}
-
-/* Иконка монетки */
-.coin-icon {
-    position: fixed;
-    top: 50%; /* Позиционирование по центру экрана */
-    left: 50%; /* Позиционирование по центру экрана */
-    transform: translate(-50%, -50%); /* Центрирование по горизонтали и вертикали */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10; /* Убедитесь, что иконка над другими элементами */
-    transition: transform 0.1s ease-in-out; /* Плавный переход для эффекта продавливания */
-}
-
-.coin-icon img {
-    max-width: 300px; /* Настройка размера иконки */
-    transition: transform 0.1s ease-in-out; /* Плавный переход для эффекта продавливания */
-}
-
-/* Эффект продавливания при нажатии */
-.coin-icon:active img {
-    transform: scale(0.9); /* Уменьшаем иконку до 90% при нажатии */
-}
-
-/* Стили для текстовых чисел */
-.number-text {
-    position: fixed;
-    top: 70px; /* Отступ сверху от верхнего края страницы */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Корректировка для центрирования */
-    font-size: 48px; /* Размер шрифта для чисел */
-    font-family: 'Politburo', sans-serif; /* Используемый шрифт */
-    color: white; /* Цвет текста */
-    white-space: nowrap; /* Запрещаем перенос текста на следующую строку */
-    text-align: center; /* Центрируем текст по горизонтали */
-    z-index: 10; /* Убедитесь, что элемент отображается поверх других */
+/* Контейнер для текста страницы */
+p {
+    text-align: center;
+    color: white;
 }
 
 /* Фиксированная картинка */

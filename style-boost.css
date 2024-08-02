@@ -1,0 +1,217 @@
+/* Общие стили для body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Politburo', sans-serif;
+    background-image: url('background-gradient-home.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Добавлено, чтобы устранить прокрутку */
+}
+
+/* Новый элемент для надписи "UPGRADE" */
+.upgrade-header {
+    position: fixed;
+    top: 80px; /* Расположить на 80 пикселей ниже верхнего края */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 48px;
+    color: black;
+    font-weight: ;
+    background-color: rgba(0, 0, 0, 0); /* Полупрозрачный черный фон для читаемости */
+    padding: 10px 0; /* Добавить немного отступов сверху и снизу */
+    box-sizing: border-box; /* Включить padding в размеры элемента */
+}
+
+/* Новый элемент для дополнительного текста под заголовком */
+.upgrade-subheader {
+    position: fixed;
+    top: 150px; /* Расположить на 40 пикселей ниже заголовка "UPGRADE" */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: yellow;
+    background-color: rgba(0, 0, 0, 0); /* Полупрозрачный черный фон для читаемости */
+    padding: 10px 0; /* Добавить немного отступов сверху и снизу */
+    box-sizing: border-box; /* Включить padding в размеры элемента */
+}
+
+
+/* Контейнер основного контента */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+    justify-content: space-between;
+    margin-top: 50px;
+    position: relative;
+    width: 100%; /* Контейнер занимает всю ширину родителя */
+    height: 300px; /* Высота контейнера */
+}
+
+/* Стили для плиток */
+.tile {
+    text-align: center;
+    position: absolute; /* Для точного позиционирования */
+}
+
+/* Иконки */
+.left1_boost {
+    top: 250px;
+    left: 70px;
+}
+
+.center1_boost {
+    top: 250px;
+    right: 70px;
+}
+
+.right1_boost {
+    bottom: -270px; /* Отступ от нижнего края контейнера */
+    left: 70px;
+}
+
+.robot1_boost {
+    bottom: -270px; /* Отступ от нижнего края контейнера */
+    right: 70px;
+}
+
+/* Установка размера иконок */
+.tile img {
+    width: 60px; /* Ширина иконки */
+    height: 60px; /* Высота иконки */
+}
+
+/* Текст под иконками */
+.tile p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: black;
+}
+
+/* Фиксированная картинка */
+.fixed-image-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px; /* Фиксированная высота контейнера */
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Прозрачный белый фон */
+    border-top: 2px solid white; /* Белая обводка сверху */
+    border-radius: 15px; /* Скошенные углы */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта */
+    overflow: hidden; /* Для обрезки содержимого, выходящего за границы */
+}
+
+/* Фиксированная картинка */
+.fixed-image {
+    width: 100%;
+    height: 100%; /* Фиксированная высота картинки */
+    object-fit: cover; /* Обеспечивает сохранение соотношения сторон */
+    border-radius: 15px; /* Скошенные углы */
+}
+
+/* Контент внутри картинки */
+.image-content {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;/* Равномерное распределение иконок */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box; /* Включаем padding в размеры элемента */
+}
+
+/* Стили для иконок */
+.icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Для псевдоэлементов */
+}
+
+.icon img {
+    max-height: 70%; /* Настройка высоты иконок */
+    max-width: 70%;  /* Настройка ширины иконок */
+}
+
+/* Псевдоэлементы для разделительных линий */
+.icon:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%);
+    height: 60%; /* Высота разделительной линии */
+    width: 3px; /* Ширина разделительной линии */
+    background-color: white; /* Цвет разделительной линии */
+    border-radius: 5px; /* Закругленные края */
+    z-index: 0; /* Разделительные черты ниже иконок */
+}
+
+/* Модальное окно */
+.modal {
+    display: none; /* Скрываем модальное окно по умолчанию */
+    position: fixed;
+    z-index: 20; /* Над другими элементами */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Включаем прокрутку, если необходимо */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    box-sizing: border-box; /* Учитываем padding и border в ширине и высоте */
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px; /* Закругленные углы */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.upgrade-button {
+    display: inline-block !important;
+    text-decoration: none !important;
+    background-color: #1fff37 !important;
+    color: #006089 !important;
+    border: 5px solid #1fd1ff !important;
+    border-radius: 100px !important;
+    font-size: 18px !important;
+    padding: 15px 100px !important; 
+    transition: all 0.8s ease !important;
+}
+
+.upgrade-button:hover {
+    text-decoration: none !important; 
+    background-color: #006089 !important;
+    color: #ffeded !important;
+    border-color: #006089 !important;
+}

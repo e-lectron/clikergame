@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Обработка кликов по иконке монетки
     const coinIcon = document.querySelector('.coin-icon');
-    
     if (coinIcon) {
         coinIcon.addEventListener('click', () => {
             // Добавляем класс, чтобы активировать анимацию
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обработка кликов по иконкам
     const icons = document.querySelectorAll('.image-content .icon');
-    
     icons.forEach(icon => {
         icon.addEventListener('click', () => {
             // Добавляем анимацию пульсации
@@ -27,28 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.remove('pulse');
             }, 600);
 
-            // Пример действия при клике на иконку
+            // Переход на целевую страницу, если это необходимо
             const iconImg = icon.querySelector('img');
             if (iconImg) {
-                switch (iconImg.alt) {
-                    case 'Icon 1':
-                        // Переход на index.html при клике на icon1
-                        window.location.href = 'index.html';
-                        break;
-                    case 'Icon 2':
-                        // Переход на boost.html при клике на icon2
-                        window.location.href = 'boost.html';
-                        break;
-                    case 'Icon 3':
-                        // Переход на tasks.html при клике на icon3
-                        window.location.href = 'tasks.html';
-                        break;
-                    case 'Icon 4':
-                        // Переход на referals.html при клике на icon4
-                        window.location.href = 'referrals.html';
-                        break;
-                    default:
-                        console.log('Неизвестная иконка:', iconImg.alt);
+                const targetPage = {
+                    'Icon 1': 'index.html',
+                    'Icon 2': 'boost.html',
+                    'Icon 3': 'tasks.html',
+                    'Icon 4': 'referrals.html'
+                }[iconImg.alt];
+
+                if (targetPage) {
+                    const currentPage = window.location.pathname.split('/').pop();
+                    if (currentPage !== targetPage) {
+                        window.location.href = targetPage;
+                    }
                 }
             }
         });
@@ -56,47 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Пример форматирования числа
     const numberTextElement = document.getElementById('number-text');
-
     if (numberTextElement) {
         const number = 1234567890; // Замените это значение на ваше число
 
         function formatNumberWithSpaces(number) {
-            // Преобразуем число в строку
-            let numberStr = number.toString();
-            // Используем регулярное выражение для добавления пробелов
-            return numberStr.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            // Преобразуем число в строку и добавляем пробелы
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         }
 
-        // Форматируем число и обновляем элемент
         numberTextElement.innerHTML = formatNumberWithSpaces(number);
     }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const icons = document.querySelectorAll('.icon');
-    
-    icons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            // Получаем целевую страницу из атрибута data-target
-            const targetPage = icon.getAttribute('data-target');
-            const currentPage = window.location.pathname.split('/').pop();
 
-            console.log(`Current Page: ${currentPage}`);
-            console.log(`Target Page: ${targetPage}`);
-
-            // Сравниваем текущую страницу с целевой
-            if (targetPage === currentPage) {
-                console.log('Already on the target page. No redirection.');
-                // Если они совпадают, ничего не делаем
-                return;
-            }
-
-            // Перенаправляем на целевую страницу
-            console.log('Redirecting to the target page.');
-            window.location.href = targetPage;
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
     // Отключаем масштабирование
     const preventZoom = (e) => {
         if (e.ctrlKey || e.metaKey || e.shiftKey) {
@@ -104,21 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Блокируем события мыши и касания
     document.addEventListener('wheel', preventZoom, { passive: false });
     document.addEventListener('touchmove', preventZoom, { passive: false });
     document.addEventListener('gesturestart', preventZoom, { passive: false });
-
-    // Предотвращаем масштабирование при двойном нажатии
-    document.addEventListener('dblclick', (e) => {
-        e.preventDefault();
-    });
-
-    // Отключаем масштабирование при нажатии кнопок управления масштабом (например, Ctrl +)
+    document.addEventListener('dblclick', (e) => e.preventDefault());
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey || e.metaKey) {
             e.preventDefault();
         }
     });
-});
 
+    // Модальное окно
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalText = document.getElementById('modal-text');
+    const modalLevel = document.getElementById('modal-level');
+    const closeBtn = document.querySelector('.close');
+
+    if (modal && closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Слушатели событий для каждой плитки
+        const tiles = document.querySelectorAll('.tile');
+        tiles.forEach((tile, index) => {
+            tile.addEventListener('click', () => {
+                modalImage.src = `skill${index + 1}.png`;
+                modalText.textContent = 'Улучшай, чтобы увеличить свою добычу за клик';
+                modalLevel.textContent = `Текущий уровень - ${index + 1}`;
+                modal.style.display = 'block';
+            });
+        });
+    }
+});

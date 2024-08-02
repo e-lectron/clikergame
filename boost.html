@@ -2,34 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Levels Page</title>
-    <link rel="stylesheet" href="style.css"> <!-- Можно использовать тот же CSS файл или создать новый -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost Levels</title>
+    <link rel="stylesheet" href="style-boost.css">
 </head>
 <body>
-    <h1>Levels Page</h1>
-    <!-- Здесь будет содержимое с уровнями для прокачки -->
-    <p>Добро пожаловать на страницу уровней!</p>
-    <!-- Добавьте контент уровней и другие элементы по вашему усмотрению -->
-	
-	    <div class="fixed-image-container">
-        <img src="fixed-image.png" alt="Fixed Image" class="fixed-image">
-        <div class="image-content">
-			<div class="icon" data-target="index.html">
-				<img src="icon1.png" alt="Icon 1">
-			</div>
-			<div class="icon" data-target="boost.html">
-				<img src="icon2.png" alt="Icon 2">
-			</div>
-			<div class="icon" data-target="tasks.html">
-				<img src="icon3.png" alt="Icon 3">
-			</div>
-			<div class="icon" data-target="referrals.html">
-				<img src="icon4.png" alt="Icon 4">
-			</div>
+
+	<div class="upgrade-header">UPGRADE</div>
+	<div class="upgrade-subheader">Прокачивайся уже быстрее!<br>Спеши прокачаться!</div>
+	<div class="container">
+        <div class="tile left1_boost">
+            <img src="icon-left1.png" alt="Level 1">
+            <p>LVL - 1</p>
+        </div>
+        <div class="tile center1_boost">
+            <img src="icon-center1.png" alt="Level 2">
+            <p>LVL - 2</p>
+        </div>
+        <div class="tile right1_boost">
+            <img src="icon-right1.png" alt="Level 3">
+            <p>LVL - 3</p>
+        </div>
+        <div class="tile robot1_boost">
+            <img src="level4.png" alt="Level 4">
+            <p>LVL - 4</p>
         </div>
     </div>
-	
-	<script src="script.js"></script>
+
+    <div class="fixed-image-container">
+        <img src="fixed-image.png" alt="Fixed Image" class="fixed-image">
+        <div class="image-content">
+            <div class="icon">
+                <a href="index.html"><img src="icon1.png" alt="Icon 1"></a>
+            </div>
+            <div class="icon">
+                <a href="boost.html"><img src="icon2.png" alt="Icon 2"></a>
+            </div>
+            <div class="icon">
+                <a href="tasks.html"><img src="icon3.png" alt="Icon 3"></a>
+            </div>
+            <div class="icon">
+                <a href="referrals.html"><img src="icon4.png" alt="Icon 4"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="Skill Image">
+            <p id="modal-text">Улучшай, чтобы увеличить свою добычу за клик</p>
+            <p id="modal-level">Текущий уровень - 1</p>
+            <button class="upgrade-button">Улучшить</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
