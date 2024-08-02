@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         break;
                     case 'Icon 4':
                         // Переход на referals.html при клике на icon4
-                        window.location.href = 'referals.html';
+                        window.location.href = 'referrals.html';
                         break;
                     default:
                         console.log('Неизвестная иконка:', iconImg.alt);
